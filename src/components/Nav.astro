@@ -1,0 +1,38 @@
+---
+const links = [
+  { href: '#home', label: 'Home', id: 'home' },
+  { href: '#projects', label: 'Projects', id: 'projects' },
+  { href: '#contact', label: 'Contact', id: 'contact' },
+] as const;
+---
+
+<nav
+  class="fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 z-50"
+  aria-label="Primary"
+>
+  <ul
+    class="flex items-center gap-0.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md px-1.5 py-1.5 shadow-lg shadow-black/30"
+  >
+    {
+      links.map(({ href, label, id }) => (
+        <li>
+          <a
+            href={href}
+            data-nav-link={id}
+            class="group relative flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:text-fg data-[active=true]:text-fg"
+          >
+            <span
+              aria-hidden="true"
+              class="h-1.5 w-1.5 rounded-full bg-active opacity-0 scale-50 transition-all duration-200 group-data-[active=true]:opacity-100 group-data-[active=true]:scale-100"
+            />
+            <span class="leading-none">{label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  import '../scripts/scrollSpy.ts';
+</script>
