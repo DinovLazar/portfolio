@@ -29,21 +29,21 @@ const items = [
 ];
 ---
 
-<section data-fade-in class="relative py-24 sm:py-32 overflow-hidden">
-  <CodeRain class="absolute inset-0 opacity-[0.12] pointer-events-none" />
-
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-      <div class="lg:sticky lg:top-32 lg:self-start">
+<section data-fade-in class="relative py-12 sm:py-16 overflow-hidden">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <div>
         <p class="text-accent text-xs sm:text-sm font-medium tracking-[0.2em] uppercase mb-5">
           Capabilities
         </p>
-        <h2 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tight">
           What I do?
         </h2>
       </div>
 
-      <div class="space-y-3">
+      <div class="relative">
+        <CodeRain class="absolute inset-0 opacity-[0.10] pointer-events-none" />
+        <div class="relative space-y-3">
         {
           items.map((item, i) => (
             <div
@@ -159,6 +159,7 @@ const items = [
             </div>
           ))
         }
+        </div>
       </div>
     </div>
   </div>
