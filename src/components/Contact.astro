@@ -1,0 +1,46 @@
+---
+import ContactForm from './ContactForm.astro';
+---
+
+<div data-fade-in class="mx-auto max-w-6xl w-full px-6 py-24 sm:py-32">
+  <div class="mb-12 sm:mb-16">
+    <p class="text-accent text-xs sm:text-sm font-medium tracking-[0.2em] uppercase mb-5">
+      Let's talk
+    </p>
+    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+      Contact
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+    <div class="space-y-6">
+      <p class="text-base sm:text-lg text-muted leading-relaxed max-w-md">
+        Have a question or a project in mind? Feel free to reach out.
+      </p>
+
+      <div class="flex items-center gap-3 text-sm text-muted">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          class="text-accent shrink-0"
+        >
+          <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span>
+          Location: <span class="text-fg">Strumica, North Macedonia</span>
+        </span>
+      </div>
+    </div>
+
+    <ContactForm />
+  </div>
+</div>

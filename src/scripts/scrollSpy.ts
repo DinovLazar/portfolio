@@ -9,6 +9,12 @@ for (const id of sectionIds) {
   if (link) links.set(id, link);
 }
 
+const sections: HTMLElement[] = [];
+for (const id of sectionIds) {
+  const section = document.getElementById(id);
+  if (section) sections.push(section);
+}
+
 const setActive = (activeId: SectionId): void => {
   for (const [id, link] of links) {
     if (id === activeId) {
@@ -19,33 +25,31 @@ const setActive = (activeId: SectionId): void => {
   }
 };
 
-const ratios = new Map<SectionId, number>(
-  sectionIds.map((id) => [id, 0]),
-);
+const updateActive = (): void => {
+  const probe = window.scrollY + window.innerHeight * 0.4;
+  let activeId: SectionId = sectionIds[0];
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    for (const entry of entries) {
-      const id = entry.target.id as SectionId;
-      ratios.set(id, entry.intersectionRatio);
+  for (const section of sections) {
+    const top = section.getBoundingClientRect().top + window.scrollY;
+    if (top <= probe) {
+      activeId = section.id as SectionId;
+    } else {
+      break;
     }
+  }
 
-    let bestId: SectionId = sectionIds[0];
-    let bestRatio = -1;
-    for (const [id, ratio] of ratios) {
-      if (ratio > bestRatio) {
-        bestRatio = ratio;
-        bestId = id;
-      }
-    }
-    setActive(bestId);
-  },
-  { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] },
-);
+  setActive(activeId);
+};
 
-for (const id of sectionIds) {
-  const section = document.getElementById(id);
-  if (section) observer.observe(section);
-}
+let raf = 0;
+const onScroll = (): void => {
+  if (raf) return;
+  raf = requestAnimationFrame(() => {
+    raf = 0;
+    updateActive();
+  });
+};
 
-setActive('home');
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll);
+updateActive();

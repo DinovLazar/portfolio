@@ -1,0 +1,53 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Project {
+  name: string;
+  description: string;
+  status: string;
+  githubUrl: string;
+  liveUrl?: string;
+  image: string;
+}
+
+const projects: Project[] = [
+  {
+    name: 'Vertex Consulting',
+    description: 'We help businesses grow smarter.',
+    status: 'Deployed',
+    githubUrl: 'https://github.com/DinovLazar/Vertex',
+    liveUrl: 'https://vertexconsulting.mk',
+    image: '/projects/vertex.png',
+  },
+  {
+    name: 'Optimind',
+    description: 'AI-Powered Customer Support.',
+    status: 'Deployed',
+    githubUrl: 'https://github.com/DinovLazar/optimind-website',
+    liveUrl: 'https://www.optimind000.com',
+    image: '/projects/optimind.png',
+  },
+  {
+    name: 'SunSet Services',
+    description: 'Premium service platform — coming soon.',
+    status: 'In Development',
+    githubUrl: 'https://github.com/DinovLazar/sunsetservices',
+    image: '/projects/sunset.png',
+  },
+];
+---
+
+<div data-fade-in class="mx-auto max-w-6xl w-full px-6 py-24 sm:py-32">
+  <div class="mb-12 sm:mb-16">
+    <p class="text-accent text-xs sm:text-sm font-medium tracking-[0.2em] uppercase mb-5">
+      My work
+    </p>
+    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+      Projects
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</div>

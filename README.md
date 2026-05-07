@@ -57,6 +57,24 @@ Defined via Tailwind v4's `@theme` directive in `src/styles/global.css`. Each `-
 | `npm run build`   | type-check and build for production         |
 | `npm run preview` | preview the production build                |
 
+## Contact form (Web3Forms)
+
+The contact form posts to [Web3Forms](https://web3forms.com), a free
+backend-less form service. To wire it up:
+
+1. Visit [web3forms.com](https://web3forms.com) and enter the email address you
+   want messages delivered to. They email you an access key instantly — no
+   account required.
+2. Open `.env` and paste the key into `PUBLIC_WEB3FORMS_ACCESS_KEY=`.
+3. Restart `npm run dev` so Vite picks up the new value.
+
+The key is intentionally a `PUBLIC_*` env var — Web3Forms keys are designed to
+be embedded in client-side code and only identify the inbox. Spam protection,
+rate limiting, and a built-in honeypot field handle abuse.
+
+If the key is missing the form still renders but submission shows an inline
+error pointing back at this setup step.
+
 ## Adding sections
 
 To add a new section to the single-page layout:

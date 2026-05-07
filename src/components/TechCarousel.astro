@@ -1,0 +1,58 @@
+---
+const techs = [
+  { name: 'React', slug: 'react', color: '61DAFB' },
+  { name: 'Next.js', slug: 'nextdotjs', color: 'ffffff' },
+  { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
+  { name: 'Node.js', slug: 'nodedotjs', color: '5FA04E' },
+  { name: 'Python', slug: 'python', color: '3776AB' },
+  { name: 'PostgreSQL', slug: 'postgresql', color: '4169E1' },
+  { name: 'Tailwind CSS', slug: 'tailwindcss', color: '06B6D4' },
+  { name: 'Docker', slug: 'docker', color: '2496ED' },
+  { name: 'Astro', slug: 'astro', color: 'ffffff' },
+  { name: 'Git', slug: 'git', color: 'F05032' },
+];
+---
+
+<section
+  data-fade-in
+  class="relative py-12 sm:py-16 overflow-hidden"
+  aria-label="Tech stack"
+>
+  <div class="flex w-max animate-marquee">
+    {
+      [0, 1].map((set) => (
+        <div
+          class="flex items-center gap-12 sm:gap-16 pr-12 sm:pr-16 shrink-0"
+          aria-hidden={set === 1 ? 'true' : undefined}
+        >
+          {techs.map((tech) => (
+            <div class="flex items-center gap-3 shrink-0">
+              <img
+                src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
+                alt={tech.name}
+                decoding="async"
+                width="28"
+                height="28"
+                class="h-7 w-7"
+              />
+              <span class="text-fg text-base sm:text-lg font-medium whitespace-nowrap">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    class="absolute inset-y-0 left-0 w-20 sm:w-32 bg-gradient-to-r from-bg to-transparent pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-y-0 right-0 w-20 sm:w-32 bg-gradient-to-l from-bg to-transparent pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+</section>
